@@ -1,91 +1,108 @@
-DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShakeShack</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 200vh;
-        }
+<style>
+    body{
+        margin:0;
+        padding:0;
+        height:200vh;
+    }
 
-        .image {
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            left: 0;
-            top: 0;
-            background-size: cover;
-            background-position: center;
-        }
+    /* extended scrolling image stuff */
+    .frontimage{
+        height:130vh;
+        background-image:url('frontimage.jpeg');
+        background-size:cover;
+        background-position:center;
+        position:relative;
+        z-index:1;
+    }
 
-        .frontimage {
-            background-image: url('frontimage.jpeg');
-            z-index: 1;
-        }
+    .backimage{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100vh;
+        background-image:url('backimage.jpeg');
+        background-size:cover;
+        background-position:center;
+        z-index:2;
+        opacity:0;
+        transition:opacity .25s linear;
+        pointer-events:none;
+    }
 
-        .backimage {
-            background-image: url('backimage.jpeg');
-            z-index: 2;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .boxs {
-            width: 100%;
-            /*making em appear after scroll*/
-            padding-top: 120vh;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-            mix-blend-mode: multiply;
-    
-        }
-        .box {
-            height:150px;
-            border-radius: 12px;
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            mix-blend-mode: multiply;
-        }
-        .box:hover {
-            transform: scale(1.05);
-        }
-        .p1 { background-image: url(othello);}
-        .p2 { background-image: url(merchantvenice);}
-        .p3 { background-image: url(hamlet);}
-        .p4 { background-image: url(macbeth);}
+    .boxs{
+        width:100%;
+        padding-top:120vh;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+        padding-left:20px;
+        padding-right:20px;
+    }
 
-        </style>
-     </head>
-     <body>
-        <div class="image frontimage"></div>
-        <div class="image backimage"></div>
-        <div class="boxs">
-            <a href ="othello.html" class="box p1"></a>
-            <a href ="merchantvenice.html" class="box p2"></a>
-            <a href ="hamlet.html" class="box p3"></a>
-            <a href ="macbeth.html" class="box p4"></a>
-        </div>
+    .box{
+        height:150px;
+        border-radius:12px;
+        background-size:cover;
+        background-position:center;
+        cursor:pointer;
+        transition:.3s;
+        mix-blend-mode:multiply;
+    }
 
-        <script>
-            //scroll function
-            let back = document.querySelector('.backimage');
-            window .addEventListener("scroll",() =>{
-                let y = window.scrollY;
-                let h = window.innerHeight;
-                let opacityV= y/h;
-                if (opacityV>1) opacityV=1;
-                back.style.opacity = opacityV;
-            });
+    .box:hover{
+        transform:scale(1.05);
+    }
+
+    .p1 { background-image:url(othello.jpeg); }
+    .p2 { background-image:url(merchantvenice.jpeg); }
+    .p3 { background-image:url(hamlet.jpeg); }
+    .p4 { background-image:url(macbeth.jpeg); }
+
+</style>
+</head>
+
+<body>
+
+    <div class="frontimage"></div>
+    <div class="backimage"></div>
+
+    <div class="boxs">
+        <a href="othello.html" class="box p1"></a>
+        <a href="merchantvenice.html" class="box p2"></a>
+        <a href="hamlet.html" class="box p3"></a>
+        <a href="macbeth.html" class="box p4"></a>
+    </div>
 
 
-        </script>
-     </body>
+<script>
+//fade in out javascript function 
+    let front = document.querySelector('.frontimage');
+    let back = document.querySelector('.backimage');
+
+    window.addEventListener('scroll', ()=>{
+
+        let y = window.scrollY;
+        let total = front.offsetHeight;    // 130vh
+        let fadeStart = total * 0.85;      // fade in last 15%
+
+        if(y >= fadeStart){
+            let prog = (y - fadeStart) / (total - fadeStart);
+            if(prog > 1) prog = 1;
+            back.style.opacity = prog;
+        } else {
+            back.style.opacity = 0;
+        }
+
+    });
+
+</script>
+
+</body>
 </html>
