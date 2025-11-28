@@ -81,24 +81,27 @@
 
 
 <script>
-//fade in out javascript function 
-    let front = document.querySelector('.frontimage');
-    let back = document.querySelector('.backimage');
+let frontimage = document.querySelector('.frontimage');
+let backimage = document.querySelector('.backimage');
+window.addEventListener('scroll', () => {
+    let y = window.scrollY;
+    let total = frontimage.offsetHeight;
+    let fadestart = total * 0.92;
+    
+    if(y >= fadestart && y <=total){
+        let prog = (y-fadestart)/(total-fadestart);
+        if(prog > 1) prog = 1;
+        backimage.style.opacity = prog;
+    }
 
-    window.addEventListener('scroll', ()=>{
+    else if(y < fadestart){
+        backimage.style.opacity = 0;
+    }
 
-        let y = window.scrollY;
-        let total = front.offsetHeight;    // 130vh
-        let fadeStart = total * 0.85;      // fade in last 15%
+    else if(y > total){
+        backimage.style.opacity = 0;
 
-        if(y >= fadeStart){
-            let prog = (y - fadeStart) / (total - fadeStart);
-            if(prog > 1) prog = 1;
-            back.style.opacity = prog;
-        } else {
-            back.style.opacity = 0;
-        }
-
+    }
     });
 
 </script>
