@@ -80,31 +80,30 @@
         <a href="macbeth.html" class="box p4"></a>
     </div>
 
-
 <script>
 let frontimage = document.querySelector('.frontimage');
 let backimage = document.querySelector('.backimage');
+
 window.addEventListener('scroll', () => {
     let y = window.scrollY;
     let total = frontimage.offsetHeight;
     let fadestart = total * 0.92;
     
-    if(y >= fadestart && y <=total){
-        let prog = (y-fadestart)/(total-fadestart);
+    if(y < fadestart){
+        // Before the fade starts, keep it hidden
+        backimage.style.opacity = 0;
+    } 
+    else if(y >= fadestart && y <= total){
+        // During the fade
+        let prog = (y - fadestart) / (total - fadestart);
         if(prog > 1) prog = 1;
         backimage.style.opacity = prog;
+    } 
+    else { // This now covers all cases where y > total
+        // After the fade is complete, keep it visible
+        backimage.style.opacity = 1;
     }
-
-    else if(y < fadestart){
-        backimage.style.opacity = 0;
-    }
-
-    else if(y > total){
-        backimage.style.opacity = 0;
-
-    }
-    });
-
+});
 </script>
 
 </body>
