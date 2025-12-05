@@ -1,54 +1,147 @@
 <!DOCTYPE html>
-<meta charset="UTF-8"
-<title>Complete Othello Quotes</title>
-<style> 
-    body{
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #573b3b;
-        margin: 0cm;
-        color: white;
-        padding: 0;
-    }
-    .header{
-        padding:20px;
-        text-align: center;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Othello Quotes</title>
+    <style> 
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #573b3b;
+            margin: 0;
+            color: white;
+            padding: 0;
+            line-height: 1.5;
+        }
+        .header{
+            padding:20px;
+            text-align: center;
+        }
+        .header h1{
+            margin: 0;
+            font-size: medium;
+        }
+        .quotes-wrap{
+            max-width: 900px;
+            margin:30px auto;
+            padding:20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap:25px;
+        }
+        .quote-box{
+            display:block;
+            background: #8f7f7f;
+            text-decoration: none; 
+            padding: 20px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            transition: .2s;
+            color: white;
+        }
+        .quote-box:hover{
+            background:#b2a2a2;
+        }
 
-    }
-    .header h1{
-        margin: 0;
-        font-size: medium;
-    }
-    .quotes-wrap{
-        max-width: 900px;
-        margin:30px auto;
-        padding:20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap:25px;
-
-    }
-    .quote-box{
-        display:block;
-        background: #8f7f7f;
-        text-decoration: none; 
-        padding: 20px;
-        margin-bottom: 8px;
-        border-radius: 8px;
-        transition: .2s;
-    }
-    .quote-box:hover{
-        background:#b2a2a2;
-    }
-
-</style>
+        .flash-wrap{
+            max-width: 900px;
+            margin: 10px auto 0;
+            padding: 20px;
+            background: #684343;
+            border-radius: 8px;
+        }
+        .flash-h{
+            display:flex;
+            justify-content:space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap:wrap;
+        }
+        .flasht{
+            margin:0;
+            font-size:18px;
+        }
+        .select{
+            padding:6px 8px;
+            border-radius: 5px;
+            border: none;
+        }
+        .flashcard-quote{
+            font-weight:bold;
+            margin-bottom:10px;
+        }
+        .flashcard-full{
+            margin-top:6px;
+            font-size:14px;
+            opacity:0.9;
+        }
+        .flashcard-notes{
+            margin-top:6px;
+            font-size:13px;
+            opacity:0.85;
+        }
+        .flashcard-buttons{
+            display:flex;
+            gap:10px;
+            margin-bottom:10px;
+        }
+        .flashcard-buttons button{
+            flex:1;
+            padding:8px;
+            border:none;
+            border-radius:5px;
+            background:#8f7f7f;
+            color:white;
+            cursor:pointer;
+        }
+        .flashcard-buttons button:hover{
+            background:#b2a2a2;
+        }
+        .flashcard-feedback{
+            font-size:14px;
+            min-height:18px;
+        }
+    </style>
+</head>
 <body>
     <div class="header">
-        <h1>Othello Quotes & Analysis</h1>
+        <h1>Othello Quotes &amp; Analysis</h1>
     </div>
+
+    <div class="flash-wrap"> 
+        <div class="flash-h">
+            <h2 class="flasht">Quick Quote Flashcards</h2>
+            <select id="deck-select" class="select">
+                <option value="jealousy">Jealousy</option>
+                <option value="love">Love &amp; Loyalty</option>
+                <option value="racism">Racism</option>
+                <option value="honour">Honour &amp; Reputation</option>
+                <option value="act1">Act 1</option>
+                <option value="act2">Act 2</option>
+                <option value="act3">Act 3</option>
+                <option value="act4">Act 4</option>
+                <option value="act5">Act 5</option>
+            </select>
+        </div>
+
+        <div id="flash-quote" class="flashcard-quote">
+            Loading quote...
+        </div>
+
+        <div class="flashcard-buttons">
+            <button id="flash-reveal">Reveal</button>
+            <button id="flash-next">Next</button>
+        </div>
+
+        <div id="flash-feedback" class="flashcard-feedback"></div>
+        <div id="flash-full" class="flashcard-full"></div>
+        <div id="flash-notes" class="flashcard-notes"></div>
+    </div>
+
     <div class="quotes-wrap">
 
         <div class="quotes-column">
-            <h2 class="column-title">By Act & Scene</h2>
+            <h2 class="column-title">By Act &amp; Scene</h2>
 
             <a class="quote-box" href="quote/act1.html">Act 1 Quotes</a>
             <a class="quote-box" href="quote/act2.html">Act 2 Quotes</a>
@@ -63,11 +156,152 @@
 
             <a class="quote-box" href="qoute/jeal.html">Jealousy</a>
             <a class="quote-box" href="quote/apear.html">Appearance and Deception</a>
-            <a class="quote-box" href="quote/love.html">Love & Loyalty</a>
-            <a class="quote-box" href="quote/honandrep.html">Honour &m Reputation</a>
+            <a class="quote-box" href="quote/love.html">Love &amp; Loyalty</a>
+            <a class="quote-box" href="quote/honandrep.html">Honour &amp; Reputation</a>
             <a class="quote-box" href="quote/rac.html">Racism</a>
         </div>
     </div>
+
+    <script>
+        const deckSources = {
+            jealousy: "qoute/jeal.html",      
+            love: "quote/love.html",
+            racism: "quote/rac.html",
+            honour: "quote/honandrep.html",
+            act1: "quote/act1.html",
+            act2: "quote/act2.html",
+            act3: "quote/act3.html",
+            act4: "quote/act4.html",
+            act5: "quote/act5.html"
+        };
+//load deck bits and lay em out functions
+        let currentDeckKey = "jealousy";
+        let currentCards = [];
+        let currentIndex = 0;
+
+        const deckSelect   = document.getElementById("deck-select");
+        const quoteEl      = document.getElementById("flash-quote");
+        const feedbackEl   = document.getElementById("flash-feedback");
+        const fullEl       = document.getElementById("flash-full");
+        const notesEl      = document.getElementById("flash-notes");
+        const revealBtn    = document.getElementById("flash-reveal");
+        const nextBtn      = document.getElementById("flash-next");
+
+        async function loadDeck(deckKey){
+            const url = deckSources[deckKey];
+            if(!url){
+                quoteEl.textContent = "No deck source set for: " + deckKey;
+                currentCards = [];
+                return;
+            }
+
+            quoteEl.textContent = "Loading...";
+            feedbackEl.textContent = "";
+            fullEl.textContent = "";
+            notesEl.textContent = "";
+
+            try{
+                const res = await fetch(url);
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, "text/html");
+
+                const items = Array.from(doc.querySelectorAll(".quote-item"));
+                currentCards = items.map(el => {
+                    const textEl = el.querySelector(".quote-text");
+                    const notesEl = el.querySelector(".quote-notes");
+                    return {
+                        fullText: textEl ? textEl.textContent.trim().replace(/\s+/g," ") : "",
+                        notes: notesEl ? notesEl.textContent.trim() : ""
+                    };
+                }).filter(c => c.fullText);
+
+                if(currentCards.length === 0){
+                    quoteEl.textContent = "No quotes found in this file.";
+                    return;
+                }
+
+                currentIndex = 0;
+                showCard(currentIndex);
+            }catch(err){
+                console.error(err);
+                quoteEl.textContent = "Error loading deck.";
+            }
+        }
+
+        function pickRandomBlank(text){
+            const words = text.split(" ");
+            if(words.length < 4){
+                return { display: text, answer: "" };
+            }
+
+            let idxOptions = [];
+            for(let i = 1; i < words.length - 1; i++){
+                const clean = words[i].replace(/[^a-zA-Z]/g, "");
+                if(clean.length > 3){
+                    idxOptions.push(i);
+                }
+            }
+
+            if(idxOptions.length === 0){
+                return { display: text, answer: "" };
+            }
+
+            const idx = idxOptions[Math.floor(Math.random() * idxOptions.length)];
+            const originalWord = words[idx];
+
+            words[idx] = "_____";
+            return {
+                display: words.join(" "),
+                answer: originalWord
+            };
+        }
+
+        function showCard(index){
+            if(currentCards.length === 0){
+                quoteEl.textContent = "No cards loaded.";
+                return;
+            }
+            const card = currentCards[index];
+
+            const blanked = pickRandomBlank(card.fullText);
+            card.currentAnswer = blanked.answer;
+            card.currentDisplay = blanked.display;
+
+            quoteEl.textContent = blanked.display;
+            feedbackEl.textContent = "";
+            fullEl.textContent = "";
+            notesEl.textContent = "";
+        }
+
+        revealBtn.addEventListener("click", function(){
+            if(currentCards.length === 0) return;
+            const card = currentCards[currentIndex];
+            if(card.currentAnswer){
+                feedbackEl.textContent = "Missing word: " + card.currentAnswer;
+            }else{
+                feedbackEl.textContent = "";
+            }
+            fullEl.textContent = "Full quote: " + card.fullText;
+            if(card.notes){
+                notesEl.textContent = "Notes: " + card.notes;
+            }else{
+                notesEl.textContent = "";
+            }
+        });
+
+        nextBtn.addEventListener("click", function(){
+            if(currentCards.length === 0) return;
+            currentIndex = (currentIndex + 1) % currentCards.length;
+            showCard(currentIndex);
+        });
+
+        deckSelect.addEventListener("change", function(){
+            currentDeckKey = this.value;
+            loadDeck(currentDeckKey);
+        });
+
+        loadDeck(currentDeckKey);
+    </script>
 </body>
-
-
+</html>
