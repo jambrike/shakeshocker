@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8"
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>.</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
         <style>
             body{
+                background:  /*little fade arounf pge*/
+                radial-gradient(900px 500px at 10% 0%, rgba(255,255,255,0.05), transparent 60%),
+                #573b3b;
                 margin: 0;
                 font-family: "Inter", sans-serif;
                 background-color: #573b3b;
@@ -31,6 +40,17 @@
                 font-size: 26px;
 
             }
+            .panel{
+                background: rgba(255,255,255,0.04);
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 12px;
+                padding: 22px;
+            }    
+               
+            .panel, .tool{
+                box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+            }
+
             .tool-grid{
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -38,12 +58,13 @@
             }
             .tool{
                 background: #806868;
-                display: block;
-                padding: 18px 22px;
-                text-decoration: none;
-                border-radius: 8px;border-color: #573b3b;
-                font-size: 18px;
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 10px;
+                padding: 16px 18px;
+                font-size: 17px;
                 color: #ffffff;
+                text-decoration: none;
+                display: block;
                 transition: .2s;
             }
             .tool:hover{
@@ -63,34 +84,52 @@
                 margin-bottom: 10px;
                 color: white;
             }
+            .subt{
+                margin: 6px 0 0 0;
+                opacity: 0.8;
+                font-size: 15px;
+            }
+            .tools, .overview{
+                max-width: 900px;
+                margin: 34px auto;
+                padding: 0 20px;
+            }
+
         </style>
     </head>
     <body>
-        <div class = "header">
-            <h1>Othello Study Notes</h1> </div>
-        <div class="tools">
-            <h2>Study Tools</h2>
+        <div class="header">
+            <h1>Othello Study Notes</h1>
+            <p class="subt">Top tier notes for LC and practice quotes!</p>
+        </div>
 
-            <div class="tool-grid">
-                <a href="charanalysis.html" class="tool">Character Analysis</a>
-                <a href="actsummary.html" class="tool">Summary each act</a>
-                <a href="quotes.html" class="tool">Test your quotes</a>
-                <a href="symbolism.html" class="tool">Symbolism and themes</a>
-                <a href="relationships.html" class="tool">Relationships</a>
-                <a href="lcexamples.html" class="tool">LC Example answers</a>
+        <div class="tools">
+            <div class="panel">
+                <h2>Study Tools</h2>
+
+                <div class="tool-grid">
+                    <a href="charanalysis.html" class="tool">Character Analysis</a>
+                    <a href="actsummary.html" class="tool">Summary each act</a>
+                    <a href="quotes.html" class="tool">Test your quotes</a>
+                    <a href="symbolism.html" class="tool">Symbolism and themes</a>
+                    <a href="relationships.html" class="tool">Relationships</a>
+                    <a href="lcexamples.html" class="tool">LC Example answers</a>
+                </div>
             </div>
         </div>
 
         <div class="overview">
-            <h2>Overview of Othello</h2> 
-            <p>
-                Othello, a tragedy by William Shakespeare, explores themes of jealousy, love, betrayal, and racism. Othello, a respected Moorish general in the Venetian army, secretly marries Desdemona. Iago,
+            <div class="panel">
+                <h2>Overview of Othello</h2> 
+                <p>
+                    Othello, a tragedy by William Shakespeare, explores themes of jealousy, love, betrayal, and racism. Othello, a respected Moorish general in the Venetian army, secretly marries Desdemona. Iago,
 jealous of Cassio’s promotion, manipulates Othello into believing Desdemona is unfaithful. Othello’s
 insecurity leads to tragedy—he kills Desdemona, learns the truth, and dies by suicide.
-            </p>
-            <p>
-                Here are some extra resources <a href="extra.html">better notes</a> anyway no need to thank me if u get h1 
-                
-            </p>
+                </p>
+                <p>
+                    Here are some extra resources <a href="extra.html">better notes</a> anyway no need to thank me if u get h1 
+                </p>
+            </div>
+        </div>
     </body>
 </html>
