@@ -45,32 +45,30 @@
                 border: 1px solid rgba(255,255,255,0.08);
                 border-radius: 12px;
                 padding: 22px;
-            }    
-               
-            .panel, .tool{
                 box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-            }
-
+}
             .tool-grid{
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 20px;
+                gap: 14px;
             }
             .tool{
                 background: #806868;
                 border: 1px solid rgba(255,255,255,0.08);
-                border-radius: 10px;
-                padding: 16px 18px;
+               border-radius: 8px;
+            padding: 14px 16px;
                 font-size: 17px;
                 color: #ffffff;
                 text-decoration: none;
                 display: block;
                 transition: .2s;
+                box-shadow: none;
             }
             .tool:hover{
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-                transform: translateY(-2px);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+                transform: translateY(-1px);
             }
+
             .overview{
                 max-width: 900px;
                 margin: 40px auto;
